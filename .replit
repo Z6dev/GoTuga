@@ -1,0 +1,8 @@
+modules = ["go-1.24"]
+run = "cd demo/cmd && go run demo.go"
+
+[nix]
+channel = "stable-25_05"
+
+[deployment]
+run = ["sh", "-c", "cd demo/cmd && go run demo.go"]

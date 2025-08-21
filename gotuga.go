@@ -27,7 +27,7 @@ type Turtle struct {
 // The turtle starts at (0,0) facing 0° (east), pen down, black ink, width 2px.
 func New(W, H int, bg color.Color) *Turtle {
 	if bg == nil {
-		bg = color.White
+		bg = color.RGBA{A: 0}
 	}
 	t := &Turtle{
 		canvas:     image.NewRGBA(image.Rect(0, 0, W, H)),
@@ -58,17 +58,19 @@ func (t *Turtle) SavePNG(filename string) error {
 // Image returns the underlying RGBA canvas (read/write).
 func (t *Turtle) Image() *image.RGBA { return t.canvas }
 
-
 // Starts Drawing Mode of Turtle
-func (t *Turtle) PenUp()   { t.penDown = false }
+func (t *Turtle) PenUp() { t.penDown = false }
+
 // Stops Drawing Mode of Turtle
 func (t *Turtle) PenDown() { t.penDown = true }
+
 // Set pen Color to color.Color type from "image/color" package
 func (t *Turtle) SetColor(c color.Color) {
 	if c != nil {
 		t.penColor = c
 	}
 }
+
 // Sets the Thickness or Width of the Pen
 func (t *Turtle) SetWidth(w float64) {
 	if w > 0 {
@@ -78,12 +80,15 @@ func (t *Turtle) SetWidth(w float64) {
 
 // Set Turtle's Rotation towards (deg) Degrees
 func (t *Turtle) SetHeading(deg float64) { t.headingDeg = deg }
+
 // Turn Left (deg) Degrees
-func (t *Turtle) Left(deg float64)       { t.headingDeg += deg }
+func (t *Turtle) Left(deg float64) { t.headingDeg += deg }
+
 // Turn Right (deg) Degrees
-func (t *Turtle) Right(deg float64)      { t.headingDeg -= deg }
+func (t *Turtle) Right(deg float64) { t.headingDeg -= deg }
+
 // Go To (0, 0) and Reset Direction to 0 Degrees, Keeps the Canvas state.
-func (t *Turtle) Home()                  { t.GoTo(0, 0); t.headingDeg = 0 }
+func (t *Turtle) Home() { t.GoTo(0, 0); t.headingDeg = 0 }
 
 // Clear repaints the canvas with the background color but keeps turtle state.
 func (t *Turtle) Clear() { t.fillCanvas(t.bg) }
@@ -109,6 +114,7 @@ func (t *Turtle) Forward(d float64) {
 	t.recordFillVertex(nx, ny)
 	t.x, t.y = nx, ny
 }
+
 // Move Backwards by (d) Steps
 func (t *Turtle) Backward(d float64) { t.Forward(-d) }
 
