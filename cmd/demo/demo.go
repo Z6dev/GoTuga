@@ -76,7 +76,7 @@ func main() {
 		t.GoTo(x, y)
 	}
 
-	if err := t.SavePNG("turtle_demo.png"); err != nil {
+	if err := t.SavePNG("gotuga_demo.png"); err != nil {
 		log.Fatal(err)
 	}
 }
