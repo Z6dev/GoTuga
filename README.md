@@ -1,6 +1,6 @@
 # GoTuga
 
-`gotuga` is a lightweight Go package that implements a turtle graphics system, similar to the classic Logo programming language.  
+`gotuga` is a Go package that implements something similar to a turtle graphics system, Like the one found in Python!  
 It allows drawing on an image canvas using simple movement and drawing commands.
 
 ---
